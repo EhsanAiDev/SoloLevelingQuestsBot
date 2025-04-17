@@ -7,4 +7,4 @@ Welcome to **Solo Leveling Quest**, a Telegram bot designed to motivate users th
 - **Score Ranking System**: Compete with other players on the leaderboard based on the XP you accumulate.
 - **Daily Evaluations**: Receive daily assessments of your performance, with consequences for inactivity.
 - **Community Engagement**: Connect with other players, share experiences, and motivate each other to achieve fitness goals.
-- **Interactive Interface**: Use inline but
+- **Interactive Interface**: Use inline buttons for easy navigation and task submission.
