@@ -1,5 +1,5 @@
 # Solo Leveling Quest
-<img src="./images/banner.jpg" >
+<img src="./images/banner.jpg" style="transform: rotate(90deg);">
 Welcome to **Solo Leveling Quest**, a Telegram bot designed to motivate users through physical challenges and self-improvement. This bot allows users to create profiles, complete various fitness tasks, and track their progress in a fun and engaging way.
 
 ## Features
