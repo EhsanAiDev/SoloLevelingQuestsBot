@@ -1,12 +1,4 @@
-from sensinfo import *
-import mysql.connector as mysql 
+import sqlite3
 
-db = mysql.connect(
-    host="localhost",
-    user= DB_USERNAME,
-    password= DB_PASSWORD,
-    database= DB
-)
-
+db = sqlite3.connect("db.sqlite3")
 cursor = db.cursor()
-

@@ -76,10 +76,10 @@ def StartHanedel(message):
     username = ms_info.username
     
     if not game.IsBan(user_id=user_id):
-        cursor.execute("SELECT * FROM users WHERE user_id=%s" , (user_id,))
+        cursor.execute("SELECT * FROM users WHERE user_id=?" , (user_id,))
         resualt = cursor.fetchall()
         if not resualt:
-            cursor.execute("INSERT INTO users (user_id, name, username) VALUES (%s, %s ,%s)" , (user_id, name, username))
+            cursor.execute("INSERT INTO users (user_id, name, username) VALUES (?, ? ,?)" , (user_id, name, username))
             db.commit()
         StartPage(user_id=user_id)
         ProfilePage(user_id=user_id)
@@ -176,14 +176,14 @@ def UpdateGame():
         
         score = player[1] - x
         if score <= 0 : # ban player
-            cursor.execute("INSERT INTO block_users (user_id) VALUES (%s);",(player[0],)) # add user to block list
+            cursor.execute("INSERT INTO block_users (user_id) VALUES (?);",(player[0],)) # add user to block list
             db.commit()
-            cursor.execute("DELETE FROM users WHERE user_id = %s",(player[0],)) # delete user from users table
+            cursor.execute("DELETE FROM users WHERE user_id = ?",(player[0],)) # delete user from users table
             db.commit()
 
             bot.send_message(chat_id=player[0] , text="‼️ You Banned from game ‼️\nyou lose all scores ")        
         else:
-            cursor.execute("UPDATE users SET score = %s,did_pushup=0,did_squat=0,did_run=0,day=day+1 WHERE user_id = %s;" , (score,player[0]))
+            cursor.execute("UPDATE users SET score = ?,did_pushup=0,did_squat=0,did_run=0,day=day+1 WHERE user_id = ?;" , (score,player[0]))
             db.commit()
 
             bot.send_message(chat_id=player[0],text=f"❗ you lose {x}xp ❗") 

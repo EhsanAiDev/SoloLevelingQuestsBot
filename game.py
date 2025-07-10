@@ -1,6 +1,4 @@
-import mysql.connector as mysql 
 from telebot.types import InlineKeyboardButton,InlineKeyboardMarkup,ForceReply
-from sensinfo import * 
 import time
 from db import db,cursor
 
@@ -25,7 +23,7 @@ class Game:
         task_markup = InlineKeyboardMarkup()
 
         tasks = ["PushUps","Squat","Athletics"]
-        cursor.execute("SELECT did_pushup,did_squat,did_run FROM users WHERE user_id = %s",(user_id,))
+        cursor.execute("SELECT did_pushup,did_squat,did_run FROM users WHERE user_id = ?",(user_id,))
         db_tasks = cursor.fetchall()[0]
 
 
@@ -56,7 +54,7 @@ class Game:
         return text
 
     def Profile(self, user_id):
-        cursor.execute('SELECT * FROM users WHERE user_id=%s', (user_id,))
+        cursor.execute('SELECT * FROM users WHERE user_id=?', (user_id,))
         user = cursor.fetchone()  # Use fetchone() since we expect a single user
 
         name = user[2]
@@ -78,29 +76,29 @@ class Game:
     
     def SubmitTask(self, user_id , task):
         if task == 'PushUps':
-            cursor.execute("UPDATE users SET did_pushup = 1 WHERE user_id = %s",(user_id,))
+            cursor.execute("UPDATE users SET did_pushup = 1 WHERE user_id = ?",(user_id,))
             db.commit()
-            cursor.execute("UPDATE users SET score = score +10 WHERE user_id = %s;",(user_id,))
+            cursor.execute("UPDATE users SET score = score +10 WHERE user_id = ?;",(user_id,))
             db.commit()
         
             return self.Profile(user_id=user_id)
         elif task == "Squat":
-            cursor.execute("UPDATE users SET did_squat = 1 WHERE user_id = %s",(user_id,))
+            cursor.execute("UPDATE users SET did_squat = 1 WHERE user_id = ?",(user_id,))
             db.commit()
-            cursor.execute("UPDATE users SET score = score +10 WHERE user_id = %s;",(user_id,))
+            cursor.execute("UPDATE users SET score = score +10 WHERE user_id = ?;",(user_id,))
             db.commit()
 
             return self.Profile(user_id=user_id)
         elif task == "Athletics":
-            cursor.execute("UPDATE users SET did_run = 1 WHERE user_id = %s",(user_id,))
+            cursor.execute("UPDATE users SET did_run = 1 WHERE user_id = ?",(user_id,))
             db.commit()
-            cursor.execute("UPDATE users SET score = score + 10 WHERE user_id = %s;",(user_id,))
+            cursor.execute("UPDATE users SET score = score + 10 WHERE user_id = ?;",(user_id,))
             db.commit()
     
             return self.Profile(user_id=user_id)
 
     def IsBan(self,user_id):
-        cursor.execute("SELECT * FROM block_users WHERE user_id = %s",(user_id,))
+        cursor.execute("SELECT * FROM block_users WHERE user_id = ?",(user_id,))
         return True if cursor.fetchall() else False
     
 
