@@ -9,3 +9,6 @@ Welcome to Solo Leveling Quest bot, a Telegram bot designed to motivate users th
 - **Daily Evaluations**: Receive daily assessments of your performance, with consequences for inactivity.
 - **Community Engagement**: Connect with other players, share experiences, and motivate each other to achieve fitness goals.
 - **Interactive Interface**: Use inline buttons for easy navigation and task submission.
+
+---
+**Created by:** EhsanAiDev
