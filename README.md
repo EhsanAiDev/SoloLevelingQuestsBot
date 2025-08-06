@@ -11,4 +11,4 @@ Welcome to Solo Leveling Quest bot, a Telegram bot designed to motivate users th
 - **Interactive Interface**: Use inline buttons for easy navigation and task submission.
 
 ---
-**Created by:** EhsanAiDev
+**Created by:** **********
